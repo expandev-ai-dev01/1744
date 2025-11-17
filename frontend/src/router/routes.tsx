@@ -4,6 +4,9 @@ import { RootLayout } from '@/layouts/RootLayout';
 import { LoadingSpinner } from '@/core/components/LoadingSpinner';
 
 const HomePage = lazy(() => import('@/pages/Home'));
+const VehicleListPage = lazy(() => import('@/pages/VehicleList'));
+const VehicleDetailPage = lazy(() => import('@/pages/VehicleDetail'));
+const VehicleContactPage = lazy(() => import('@/pages/VehicleContact'));
 const NotFoundPage = lazy(() => import('@/pages/NotFound'));
 
 /**
@@ -21,7 +24,31 @@ export const router = createBrowserRouter([
         index: true,
         element: (
           <Suspense fallback={<LoadingSpinner />}>
-            <HomePage />
+            <VehicleListPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'vehicles',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <VehicleListPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'vehicles/:id',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <VehicleDetailPage />
+          </Suspense>
+        ),
+      },
+      {
+        path: 'vehicles/:id/contact',
+        element: (
+          <Suspense fallback={<LoadingSpinner />}>
+            <VehicleContactPage />
           </Suspense>
         ),
       },
